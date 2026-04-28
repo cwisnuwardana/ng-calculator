@@ -14,7 +14,7 @@ co2 = st.number_input("CO2 (Carbon Dioxed)", value=0.7)
 c5h12 = st.number_input("C5H12 (Pentane)", value=0.16)
 c6h14 = st.number_input("C6H14 (Hexane)", value=0.12)
 st.info("Note: Total Gas Composition 100%.")
-st.write(f"Mmix: {t:.2f} %")
+st.write(f"Total: {t:.2f} %")
 
 st.header("Process Condition")
 P = st.number_input("Pressure (bar abs)", value=7.0)
