@@ -13,8 +13,8 @@ n2 = st.number_input("N2 (Nitrogen)", value=1.8)
 co2 = st.number_input("CO2 (Carbon Dioxed)", value=0.7)
 c5h12 = st.number_input("C5H12 (Pentane)", value=0.16)
 c6h14 = st.number_input("C6H14 (Hexane)", value=0.12)
-st.header("Total Gas Composition (%)") 
-Total = (ch4 + c2h6 + c3h8 + c4h10 + n2 + co2 + c5h12 + c6h14)*100%
+st.header("Total Gas Composition 100%") 
+
 
 st.header("Process Condition")
 P = st.number_input("Pressure (bar abs)", value=7.0)
