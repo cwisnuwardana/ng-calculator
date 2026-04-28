@@ -78,9 +78,50 @@ else :
     st.success("Total Composition Gas 0K (100%)")
                                         
 st.info("Note: Pressure auto convert bar to Pa, Temperature auto convert deg C to K")
-st.info("M (g/mol) CH4=16, C2H6=30, C3H8=44, C4H10=58, N2=28, C5H12=72,C6H14=72")    
 st.info("Note: Calculation based on idel gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
 
+import pandas as pd
+
+st.header("Gas Component Reference")
+
+data = {
+    "Component": [
+        "CH4", "C2H6", "C3H8", "C4H10",
+        "C5H12", "C6H14", "N2", "CO2"
+    ],
+    "Name": [
+        "Methane", "Ethane", "Propane", "Butane",
+        "Pentane", "Hexane", "Nitrogen", "Carbon Dioxide"
+    ],
+    "M (g/mol)": [16, 30, 44, 58, 72, 86, 28, 44],
+    "Category": [
+        "Light Gas", "Light Gas", "Medium", "Medium",
+        "Heavy", "Heavy", "Inert", "Acid Gas"
+    ],
+    "Phase Risk": [
+        "Gas", "Gas", "Gas", "Gas",
+        "⚠️ Condensate", "⚠️ Condensate", "Gas", "Gas"
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# 🎨 Styling
+def highlight(row):
+    if row["Category"] == "Heavy":
+        return ["background-color: #ffcccc"] * len(row)
+    elif row["Category"] == "Medium":
+        return ["background-color: #fff2cc"] * len(row)
+    elif row["Category"] == "Light Gas":
+        return ["background-color: #d9ead3"] * len(row)
+    else:
+        return [""] * len(row)
+
+styled_df = df.style.apply(highlight, axis=1)
+
+st.dataframe(styled_df, use_container_width=True)
+
+st.info("Light Gas = Stable | Heavy (C5+) = Potential Condensation Risk")
  
 
 
