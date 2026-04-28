@@ -25,7 +25,7 @@ price = st.number_input("Gas Price (Rp/Nm3)", value=10000)
 t = (ch4 + c2h6 + c3h8 + c4h10 + n2 + co2 + c5h12 + c6h14)*100
 M = (ch4*16 + c2h6*30 + c3h8*44 + c4h10*58 + n2*28 + co2*44 + c5h12*72 + c6h14*72)/100
 Rs = 8.314 / (M/1000)
-rho = P / (Rs * T * Z)
+rho = (P*100000 / (Rs * T * Z)
 energy = 35 * (ch4/100)
 cost = price * 100
 
