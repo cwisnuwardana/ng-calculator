@@ -57,7 +57,7 @@ st.write(f"Cost: Rp {cost:,.0f}/h")
 if M < 19:
     st.success("Lean Gas (Dry Gas)")
 else:
-    st.warning("Rich Gas "Wet Gas)")
+    st.warning("Rich Gas (Wet Gas)")
 
 # =========================
 # RECOMENDATION
