@@ -47,3 +47,13 @@ st.header("S401 Recommendation")
 st.write(f"Set Rs = {round(Rs)} J/kg.K")
 
 st.info("Note: Calculation based on idel gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
+
+st.info("M (g/mol) 
+CH4=16
+C2H6=30
+C3H8=44
+C4H10=58
+N2=28
+C02=44
+C5H12=72
+C6H14=72")
