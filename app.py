@@ -1,0 +1,41 @@
+import streamlit as st
+
+st.title("NG Calculator S401")
+
+# INPUT
+st.header("Gas Composition (%)")
+ch4 = st.number_input("CH4", value=90.0)
+c2h6 = st.number_input("C2H6", value=5.0)
+c3h8 = st.number_input("C3H8", value=2.0)
+c4h10 = st.number_input("C4H10", value=0.5)
+n2 = st.number_input("N2", value=1.8)
+co2 = st.number_input("CO2", value=0.7)
+
+st.header("Process Condition")
+P = st.number_input("Pressure (bar abs)", value=7.0)
+T = st.number_input("Temperature (K)", value=308.0)
+Z = st.number_input("Z factor", value=1.0)
+price = st.number_input("Gas Price (Rp/Nm3)", value=10000)
+
+# CALCULATION
+M = (ch4*16 + c2h6*30 + c3h8*44 + c4h10*58 + n2*28 + co2*44)/100
+Rs = 8.314 / (M/1000)
+rho = P / (Rs * T * Z)
+energy = 35 * (ch4/100)
+cost = price * 100
+
+# OUTPUT
+st.header("Result")
+st.write(f"Mmix: {M:.2f} g/mol")
+st.write(f"Rs: {Rs:.2f} J/kg.K")
+st.write(f"Density: {rho:.2f} kg/m3")
+st.write(f"Energy: {energy:.2f} MJ/Nm3")
+st.write(f"Cost: Rp {cost:,.0f}/h")
+
+if M < 19:
+    st.success("Lean Gas")
+else:
+    st.warning("Rich Gas")
+
+st.header("S401 Recommendation")
+st.write(f"Set Rs = {round(Rs)} J/kg.K")
