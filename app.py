@@ -45,12 +45,13 @@ cost = price * 100
 
 # OUTPUT
 st.header("Result")
-st.write(f"Total Gas Composition: {totalgas:.2f} %")
-st.write(f"Mmix: {M:.2f} g/mol")
-st.write(f"Rs: {Rs:.2f} J/kg.K")
-st.write(f"Density: {rho:.2f} kg/m3")
-st.write(f"Energy: {energy:.2f} MJ/Nm3")
-st.write(f"Cost: Rp {cost:,.0f}/h")
+
+st.metric(f"Total Gas Composition: {totalgas:.2f} %")
+st.metric(f"Mmix: {M:.2f} g/mol")
+st.metric(f"Rs: {Rs:.2f} J/kg.K")
+st.metric(f"Density: {rho:.2f} kg/m3")
+st.metric(f"Energy: {energy:.2f} MJ/Nm3")
+st.metric(f"Cost: Rp {cost:,.0f}/h")
 
 # =========================
 # STATUS
