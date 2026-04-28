@@ -5,12 +5,12 @@ st.caption("Developed by Cahyadi Wisnu Wardana")
 
 # INPUT
 st.header("Gas Composition (%)")
-ch4 = st.number_input("CH4", value=90.0)
-c2h6 = st.number_input("C2H6", value=5.0)
-c3h8 = st.number_input("C3H8", value=2.0)
-c4h10 = st.number_input("C4H10", value=0.5)
-n2 = st.number_input("N2", value=1.8)
-co2 = st.number_input("CO2", value=0.7)
+ch4 = st.number_input("CH4 (Methane)", value=90.0)
+c2h6 = st.number_input("C2H6 (Ethane)", value=5.0)
+c3h8 = st.number_input("C3H8 (Propane)", value=2.0)
+c4h10 = st.number_input("C4H10 (Butane)", value=0.5)
+n2 = st.number_input("N2 (Nitrogen)", value=1.8)
+co2 = st.number_input("CO2 (Carbon Dioxed", value=0.7)
 
 st.header("Process Condition")
 P = st.number_input("Pressure (bar abs)", value=7.0)
