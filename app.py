@@ -71,7 +71,7 @@ st.write(f"Set Rs = {round(Rs)} J/kg.K")
 # =========================
 
 if abs(totalgas - 100) > 0.1:
-    st.error(f"Total Gas Composition = {total:.2f}% (Harus 100%)")
+    st.error(f"Total Gas Composition = {totalgas:.2f}% (Harus 100%)")
 else :
     st.success("Total Composition Gas 0K (100%)")
                                         
