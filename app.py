@@ -70,10 +70,11 @@ st.write(f"Set Rs = {round(Rs)} J/kg.K")
 # =========================
 totalgas = (ch4 + c2h6 + c3h8 + c4h10 + n2 + co2 + c5h12 + c6h14)
 
-if abs(totalgas -100) > 0.1:
-    st.error(f"Total Composition = {total:.2f)% (Harus 100%)")
+if abs(totalgas - 100) > 0.1:
+    st.error(f"Total Gas Composition = {total:.2f}% (Harus 100%)")
 else :
     st.success("Total Composition Gas 0K (100%)")
+                                        
 st.info("Note: Pressure auto convert bar to Pa, Temperature auto convert deg C to K")
 st.info("M (g/mol) CH4=16, C2H6=30, C3H8=44, C4H10=58, N2=28, C5H12=72,C6H14=72")    
 st.info("Note: Calculation based on idel gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
