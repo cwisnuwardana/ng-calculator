@@ -1,6 +1,7 @@
 import streamlit as st
 
-st.title("NG Calculator S401")
+st.title("Natural Gas Engineering Tool SUTO S401")
+st.caption("Developed by Cahyadi Wisnu Wardana")
 
 # INPUT
 st.header("Gas Composition (%)")
@@ -39,3 +40,5 @@ else:
 
 st.header("S401 Recommendation")
 st.write(f"Set Rs = {round(Rs)} J/kg.K")
+
+st.info("Note: Calculation based on idel gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
