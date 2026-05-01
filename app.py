@@ -59,6 +59,7 @@ st.header("Result")
 
 st.caption("Nm3/h use reference temperature : 15 DegC")
 st.caption("Sm3/h use reference temperature : 20 DegC")
+st.caption("Reference pressure (hPa) : 1013.2")
 st.metric("Total Gas Composition:", f"{totalgas:.2f} %")
 st.metric("Mmix (g/mol)", f"{M:.2f}")
 st.metric("Gas Constant Rs (J/kg·K)", f"{Rs:.2f}")
