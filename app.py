@@ -17,6 +17,7 @@ c5h12 = st.number_input("C5H12 (Pentane)", value=0.16)
 c6h14 = st.number_input("C6H14 (Hexane)", value=0.12)
 c7h16 = st.number_input("C7H16 (n-Heptane)", value=0.0)
 c8h18 = st.number_input("C8H18 (3-Methylheptane)", value=0.0)
+h2o = st.number_input("H2O (Water)", value=0.0)
 h2s = st.number_input("H2S (Hydrogen Sulfide)", value=0.0)
 st.info("Note: Total Gas Composition must 100% -see result in detail")
 
@@ -40,7 +41,7 @@ T = T_C + 273.15     # deg C to K
 # =========================
 # CALCULATION
 totalgas = (ch4 + c2h6 + c3h8 + c4h10 + n2 + co2 + c5h12 + c6h14 + c7h16 + c8h18 +h2s)
-M = (ch4*16 + c2h6*30 + c3h8*44 + c4h10*58 + n2*28 + co2*44 + c5h12*72 + c6h14*86 + c7h16*100 + c8h18*114 +h2s*34.08)/100
+M = (ch4*16 + c2h6*30 + c3h8*44 + c4h10*58 + n2*28 + co2*44 + c5h12*72 + c6h14*86 + c7h16*100 + c8h18*114 +h2o*18.016 +h2s*34.08)/100
 Rs = 8.314 / (M/1000)
 rho = P / (Rs * T * Z)
 energy = 35 * (ch4/100)
