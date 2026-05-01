@@ -216,6 +216,50 @@ elif heavy > 0.3 or co2_level > 2:
 else:
     st.success("✅ GAS CONDITION: STABLE")
 
+st.header("🧠 Smart Recommendation")
+
+recommendations = []
+
+# =========================
+# CONDENSATE
+# =========================
+if heavy > 1:
+    recommendations.append("➡️ Install / check separator (liquid removal)")
+    recommendations.append("➡️ Check gas temperature (avoid drop below dew point)")
+elif heavy > 0.3:
+    recommendations.append("➡️ Monitor condensate risk (C5+ increasing)")
+
+# =========================
+# CO2
+# =========================
+if co2_level > 4:
+    recommendations.append("➡️ Evaluate gas treatment (CO2 removal)")
+    recommendations.append("➡️ Expect lower calorific value")
+elif co2_level > 2:
+    recommendations.append("➡️ Monitor CO2 trend (quality slightly decreasing)")
+
+# =========================
+# H2S
+# =========================
+if h2s_level > 0:
+    recommendations.append("➡️ Immediate corrosion check required")
+    recommendations.append("➡️ Ensure H2S safety compliance (PPE, detector)")
+
+# =========================
+# GAS CONSTANT (Rs)
+# =========================
+if abs(error) > 2:
+    recommendations.append(f"➡️ Adjust Rs setting (current error {error:.2f}%)")
+
+# =========================
+# GENERAL
+# =========================
+if len(recommendations) == 0:
+    st.success("✅ No action required (Gas condition optimal)")
+else:
+    for rec in recommendations:
+        st.write(rec)
+
 # =========================
 # INFO BOX
 # =========================
