@@ -73,6 +73,16 @@ st.header("S401 Recommendation")
 st.write(f"Set Rs = {round(Rs)} J/kg.K")
 
 # =========================
+# Error reading
+# =========================
+actual = st.number_input("Actual Flow (reference)", value=100.0)
+measured = st.number_input("Measured Flow (S401)", value=100.0)
+
+error = (measured - actual) / actual * 100
+
+st.metric("Error (%)", f"{error:.2f}")
+
+# =========================
 # VALIDATION
 # =========================
 
