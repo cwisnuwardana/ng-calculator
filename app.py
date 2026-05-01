@@ -283,7 +283,9 @@ if st.button("Generate PDF Report"):
     # =========================
     content.append(Paragraph("<b>Natural Gas Analysis Report SUTO iTec Indonesia</b>", styles["Title"]))
     content.append(Spacer(1,12))
-
+    content.append(Paragraph("<i>By Cahyadi Wisnu Wardana</i>", styles["Title"]))
+    content.append(Spacer(1,12))
+    
     # =========================
     # SUMMARY AUTO
     # =========================
@@ -336,7 +338,6 @@ if st.button("Generate PDF Report"):
 
     content.append(Paragraph("<b>Recommendation</b>", styles["Heading2"]))
     content.append(Paragraph(rec_text, styles["Normal"]))
-content.append(Paragraph("<b>By: Cahyadi Wisnu Wardana"</b>", styles["Heading2"]))
     
     
     # =========================
