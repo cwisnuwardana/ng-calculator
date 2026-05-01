@@ -281,7 +281,7 @@ if st.button("Generate PDF Report"):
     # =========================
     # TITLE
     # =========================
-    content.append(Paragraph("<b>Natural Gas Analysis Report</b>", styles["Title"]))
+    content.append(Paragraph("<b>Natural Gas Analysis Report SUTO iTec Indonesia</b>", styles["Title"]))
     content.append(Spacer(1,12))
 
     # =========================
@@ -336,7 +336,9 @@ if st.button("Generate PDF Report"):
 
     content.append(Paragraph("<b>Recommendation</b>", styles["Heading2"]))
     content.append(Paragraph(rec_text, styles["Normal"]))
-
+content.append,("By: Cahyadi Wisnu Wardana")
+    
+    
     # =========================
     # SAVE FILE
     # =========================
