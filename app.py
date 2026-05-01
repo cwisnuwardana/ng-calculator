@@ -285,19 +285,9 @@ if st.button("Generate PDF Report"):
     content.append(Paragraph("<b>Natural Gas Analysis Report</b>", styles["Title"]))
     content.append(Spacer(1,12))
     content.append("Developed by Cahyadi Wisnu Wardana")
-from PIL import Image
-import streamlit as st
-
-# Load logo
-logo = Image.open("suto_logo.png")
-
-# Display
-st.image(logo, use_container_width=True)
-
     # =========================
     # SUMMARY AUTO
     # =========================
-
     summary_text = f"""
     Gas composition indicates methane dominant (~{ch4:.2f}%).
     CO2 level at {co2:.2f}%.
