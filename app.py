@@ -287,6 +287,17 @@ if st.button("Generate PDF Report"):
     # =========================
     # SUMMARY AUTO
     # =========================
+    from PIL import Image
+import streamlit as st
+
+# Load logo
+logo = Image.open("suto_logo.png")
+
+# Display
+st.image(logo, use_container_width=True)
+
+st.title("Natural Gas Engineering Tool SUTO S401")
+st.caption("Developed by Cahyadi Wisnu Wardana")
     summary_text = f"""
     Gas composition indicates methane dominant (~{ch4:.2f}%).
     CO2 level at {co2:.2f}%.
