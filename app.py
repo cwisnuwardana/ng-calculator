@@ -1,14 +1,5 @@
 import streamlit as st
 
-from PIL import Image
-import streamlit as st
-
-# Load logo
-logo = Image.open("suto_logo.png")
-
-# Display
-st.image(logo, use_container_width=True)
-
 st.title("Natural Gas Engineering Tool SUTO S401")
 st.caption("Developed by Cahyadi Wisnu Wardana")
 
