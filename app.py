@@ -337,9 +337,9 @@ if st.button("Generate PDF Report"):
 
     content.append(Paragraph("<b>Recommendation</b>", styles["Heading2"]))
     content.append(Paragraph(rec_text, styles["Normal"]))
-
-
     
+    content.append(Spacer(1,18))
+    content.append(Spacer(1,18))
     content.append(Spacer(1,18))
     content.append(Paragraph("<i>Suto iTec Indonesia developed by Cahyadi Wisnu Wardana</i>", styles["Normal"]))
     
