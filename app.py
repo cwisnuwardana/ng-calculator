@@ -281,10 +281,9 @@ if st.button("Generate PDF Report"):
     # =========================
     # TITLE
     # =========================
-         
     content.append(Paragraph("<b>Natural Gas Analysis Report</b>", styles["Title"]))
     content.append(Spacer(1,12))
-    content.append("Developed by Cahyadi Wisnu Wardana")
+
     # =========================
     # SUMMARY AUTO
     # =========================
