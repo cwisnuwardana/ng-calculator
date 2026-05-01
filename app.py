@@ -176,7 +176,7 @@ st.header("⚠️ Gas Quality Warning System")
 # =========================
 # INPUT (pakai variabel kamu)
 # =========================
-heavy = c5 + c6      # bisa ditambah C7, C8 kalau ada
+heavy = c5h12 + c6h14      # bisa ditambah C7, C8 kalau ada
 co2_level = co2
 h2s_level = st.session_state.get("h2s", 0)  # kalau ada input H2S
 
