@@ -340,8 +340,8 @@ if st.button("Generate PDF Report"):
 
 
     
-    content.append(Spacer(1,8))
-    content.append(Paragraph("<i>By Cahyadi Wisnu Wardana</i>", styles["Normal"]))
+    content.append(Spacer(4,12))
+    content.append(Paragraph("<i>Suto iTec Indonesia developed by Cahyadi Wisnu Wardana</i>", styles["Normal"]))
     
     
     # =========================
