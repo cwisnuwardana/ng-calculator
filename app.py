@@ -56,7 +56,7 @@ cost = price * 100
 
 # OUTPUT
 st.header("Result")
-
+st.caption("Custom for Others Gas")
 st.caption("Nm3/h use reference temperature : 15 DegC")
 st.caption("Sm3/h use reference temperature : 20 DegC")
 st.caption("Reference pressure (hPa) : 1013.2")
