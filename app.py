@@ -336,7 +336,7 @@ if st.button("Generate PDF Report"):
 
     content.append(Paragraph("<b>Recommendation</b>", styles["Heading2"]))
     content.append(Paragraph(rec_text, styles["Normal"]))
-content.append,("By: Cahyadi Wisnu Wardana")
+content.append,(Paragraph("<b>By: Cahyadi Wisnu Wardana"</b>", styles["Heading2"]))
     
     
     # =========================
