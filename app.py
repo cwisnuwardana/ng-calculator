@@ -57,8 +57,8 @@ cost = price * 100
 # OUTPUT
 st.header("Result")
 
-st.header("Nm3/h use reference temperature : 15 DegC")
-st.header("Sm3/h use reference temperature : 20 DegC")
+st.Normal("Nm3/h use reference temperature : 15 DegC")
+st.Normal("Sm3/h use reference temperature : 20 DegC")
 st.metric("Total Gas Composition:", f"{totalgas:.2f} %")
 st.metric("Mmix (g/mol)", f"{M:.2f}")
 st.metric("Gas Constant Rs (J/kg·K)", f"{Rs:.2f}")
