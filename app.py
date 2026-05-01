@@ -75,12 +75,20 @@ st.write(f"Set Rs = {round(Rs)} J/kg.K")
 # =========================
 # Error reading
 # =========================
+st.header("Error Reading")
 actual = st.number_input("Actual Flow (reference)", value=100.0)
 measured = st.number_input("Measured Flow (S401)", value=100.0)
 
 error = (measured - actual) / actual * 100
 
 st.metric("Error (%)", f"{error:.2f}")
+
+R_actual = Rs   # dari kalkulasi
+R_set = st.number_input("Rₛ di S401", value=460.0)
+
+error = (R_actual / R_set - 1) * 100
+
+st.metric("Error akibat Rₛ (%)", f"{error:.2f}")
 
 # =========================
 # VALIDATION
