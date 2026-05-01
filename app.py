@@ -99,38 +99,66 @@ if abs(totalgas - 100) > 0.1:
 else :
     st.success("Total Composition Gas 0K (100%)")
                                         
-st.info("Note: Pressure auto convert bar to Pa, Temperature auto convert deg C to K")
-st.info("Note: Calculation based on idel gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
-
 import pandas as pd
 
 st.header("Gas Component Reference")
 
 data = {
     "Component": [
-        "CH4", "C2H6", "C3H8", "C4H10",
-        "C5H12", "C6H14", "N2", "CO2"
+        "CH4","C2H6","C3H8","C4H10",
+        "C5H12","C6H14","C7H16","C8H18",
+        "N2","CO2","H2O","H2S"
     ],
     "Name": [
-        "Methane", "Ethane", "Propane", "Butane",
-        "Pentane", "Hexane", "Nitrogen", "Carbon Dioxide"
+        "Methane","Ethane","Propane","Butane",
+        "Pentane","Hexane","Heptane","Octane",
+        "Nitrogen","Carbon Dioxide","Water","Hydrogen Sulfide"
     ],
-    "M (g/mol)": [16, 30, 44, 58, 72, 86, 28, 44],
-    "Category": [
-        "Light Gas", "Light Gas", "Medium", "Medium",
-        "Heavy", "Heavy", "Inert", "Acid Gas"
-    ],
-    "Phase Risk": [
-        "Gas", "Gas", "Gas", "Gas",
-        "⚠️ Condensate", "⚠️ Condensate", "Gas", "Gas"
+    "M (g/mol)": [
+        16,30,44,58,72,86,100,114,28,44,18,34
     ]
 }
 
 df = pd.DataFrame(data)
 
-# 🎨 Styling
+# =========================
+# CATEGORY LOGIC
+# =========================
+def category(comp):
+    if comp in ["CH4","C2H6"]:
+        return "Light Gas"
+    elif comp in ["C3H8","C4H10"]:
+        return "Medium"
+    elif comp.startswith("C") and len(comp) > 3:
+        return "Heavy (C5+)"
+    elif comp == "N2":
+        return "Inert"
+    elif comp in ["CO2","H2S"]:
+        return "Acid Gas"
+    else:
+        return "-"
+
+# =========================
+# PHASE RISK LOGIC
+# =========================
+def phase_risk(comp):
+    if comp in ["C5H12","C6H14","C7H16","C8H18"]:
+        return "⚠️ Condensate"
+    elif comp == "H2O":
+        return "⚠️ Condensate"
+    elif comp == "H2S":
+        return "⚠️ Risk (corrosion)"
+    else:
+        return "Gas"
+
+df["Category"] = df["Component"].apply(category)
+df["Phase Risk"] = df["Component"].apply(phase_risk)
+
+# =========================
+# COLOR STYLE
+# =========================
 def highlight(row):
-    if row["Category"] == "Heavy":
+    if "Heavy" in row["Category"]:
         return ["background-color: #ffcccc"] * len(row)
     elif row["Category"] == "Medium":
         return ["background-color: #fff2cc"] * len(row)
@@ -143,7 +171,14 @@ styled_df = df.style.apply(highlight, axis=1)
 
 st.dataframe(styled_df, use_container_width=True)
 
+# =========================
+# INFO BOX
+# =========================
+st.info("Light Gas = Stable | Medium = Transitional | Heavy (C5+) = Condensate Risk")
+
 st.info("Light Gas = Stable | Heavy (C5+) = Potential Condensation Risk")
+st.info("Note: Pressure auto convert bar to Pa, Temperature auto convert deg C to K")
+st.info("Note: Calculation based on ideal gas approximation. For PGN pipeline typical accuracy +/-2-5%.")
  
 
 
