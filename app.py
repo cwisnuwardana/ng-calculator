@@ -310,7 +310,7 @@ if st.button("Generate PDF Report"):
 
     content.append(Paragraph("<b>Gas Condition</b>", styles["Heading2"]))
     content.append(Paragraph(status, styles["Normal"]))
-    content.append(Spacer(1,12))
+    
 
     # =========================
     # RECOMMENDATION AUTO
