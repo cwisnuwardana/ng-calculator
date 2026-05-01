@@ -171,6 +171,51 @@ styled_df = df.style.apply(highlight, axis=1)
 
 st.dataframe(styled_df, use_container_width=True)
 
+st.header("⚠️ Gas Quality Warning System")
+
+# =========================
+# INPUT (pakai variabel kamu)
+# =========================
+heavy = c5 + c6      # bisa ditambah C7, C8 kalau ada
+co2_level = co2
+h2s_level = st.session_state.get("h2s", 0)  # kalau ada input H2S
+
+# =========================
+# RULE ENGINE
+# =========================
+
+# 1. Condensate Risk
+if heavy > 1:
+    st.error("⚠️ HIGH Condensate Risk (C5+ > 1%)")
+elif heavy > 0.3:
+    st.warning("⚠️ Moderate Condensate Risk")
+else:
+    st.success("✅ Low Condensate Risk")
+
+# 2. CO2 Quality
+if co2_level > 4:
+    st.error("⚠️ High CO2 → Calorific Value Drop")
+elif co2_level > 2:
+    st.warning("⚠️ CO2 Increasing (monitor)")
+else:
+    st.success("✅ CO2 Normal")
+
+# 3. H2S Safety
+if h2s_level > 0:
+    st.error("☠️ H2S DETECTED → Corrosion & Safety Risk")
+else:
+    st.success("✅ No H2S detected")
+
+# 4. Overall Status
+st.subheader("Overall Assessment")
+
+if heavy > 1 or co2_level > 4 or h2s_level > 0:
+    st.error("🚨 GAS CONDITION: ATTENTION REQUIRED")
+elif heavy > 0.3 or co2_level > 2:
+    st.warning("⚠️ GAS CONDITION: MONITORING")
+else:
+    st.success("✅ GAS CONDITION: STABLE")
+
 # =========================
 # INFO BOX
 # =========================
