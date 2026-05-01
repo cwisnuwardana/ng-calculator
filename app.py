@@ -260,6 +260,86 @@ else:
     for rec in recommendations:
         st.write(rec)
 
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+import tempfile
+
+st.header("📄 Generate Report")
+
+if st.button("Generate PDF Report"):
+
+    styles = getSampleStyleSheet()
+    content = []
+
+    # =========================
+    # TITLE
+    # =========================
+    content.append(Paragraph("<b>Natural Gas Analysis Report</b>", styles["Title"]))
+    content.append(Spacer(1,12))
+
+    # =========================
+    # SUMMARY AUTO
+    # =========================
+    summary_text = f"""
+    Gas composition indicates methane dominant (~{ch4:.2f}%).
+    CO2 level at {co2:.2f}%.
+    Heavy component (C5+) at {heavy:.2f}%.
+    """
+
+    content.append(Paragraph("<b>Summary</b>", styles["Heading2"]))
+    content.append(Paragraph(summary_text, styles["Normal"]))
+    content.append(Spacer(1,12))
+
+    # =========================
+    # WARNING SUMMARY
+    # =========================
+    status = "STABLE"
+    if heavy > 1 or co2 > 4 or h2s_level > 0:
+        status = "ATTENTION REQUIRED"
+    elif heavy > 0.3 or co2 > 2:
+        status = "MONITORING"
+
+    content.append(Paragraph("<b>Gas Condition</b>", styles["Heading2"]))
+    content.append(Paragraph(status, styles["Normal"]))
+    content.append(Spacer(1,12))
+
+    # =========================
+    # RECOMMENDATION AUTO
+    # =========================
+    rec_text = ""
+
+    if heavy > 1:
+        rec_text += "- Check separator / condensate removal<br/>"
+    elif heavy > 0.3:
+        rec_text += "- Monitor condensate risk<br/>"
+
+    if co2 > 4:
+        rec_text += "- Evaluate CO2 treatment<br/>"
+    elif co2 > 2:
+        rec_text += "- Monitor CO2 trend<br/>"
+
+    if h2s_level > 0:
+        rec_text += "- Check corrosion & safety system<br/>"
+
+    if abs(error) > 2:
+        rec_text += f"- Adjust Rs setting (error {error:.2f}%)<br/>"
+
+    if rec_text == "":
+        rec_text = "No action required"
+
+    content.append(Paragraph("<b>Recommendation</b>", styles["Heading2"]))
+    content.append(Paragraph(rec_text, styles["Normal"]))
+
+    # =========================
+    # SAVE FILE
+    # =========================
+    tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
+    doc = SimpleDocTemplate(tmp_file.name)
+    doc.build(content)
+
+    with open(tmp_file.name, "rb") as f:
+        st.download_button("📥 Download Report", f, file_name="NG_Report.pdf")
+
 # =========================
 # INFO BOX
 # =========================
